@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-let persistedUser = sessionStorage.getItem("username");
-const userName = persistedUser ? persistedUser : null;
+let persistedUser = null;
+if (typeof window !== "undefined") {
+  persistedUser = sessionStorage.getItem("username");
+}
+const userName = persistedUser ? persistedUser : "";
 
 const buttonSlice = createSlice({
   name: "button",
